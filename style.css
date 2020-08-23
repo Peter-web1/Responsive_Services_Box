@@ -25,6 +25,7 @@ body {
     width: 350px;
     margin: 0 auto;
     position: relative;
+    perspective: 1000px;
 }
 
 .wrapper .box .front-face {
@@ -35,6 +36,7 @@ body {
     flex-direction: column;
     justify-content: center;
     box-shadow: 0px 5px 20px 0px rgba(0, 81, 250, 0.1);
+    transition: all 0.5s ease;
 }
 
 .box .front-face .icon {
@@ -52,41 +54,42 @@ body {
     text-transform: uppercase;
 }
 
-.box .front-face .icon i,
+.box .front-face .icon i, 
 .box .front-face span {
     background: linear-gradient(-135deg, #c850c0, #4158d0);
     -webkit-background-clip: text;/*ПЕРЕКРАСИТЬ НЕ ЗАДНИЙ ФОН А ОБЬЕКТ ТЕКСТ*/
     -webkit-text-fill-color: transparent;/*ПЕРЕКРАСИТЬ НЕ ЗАДНИЙ ФОН А ОБЬЕКТ ТЕКСТ*/
 }
 
-.box .back-face {
+.box .back-face{
     position: absolute;
     top: 0;
     left: 0;
-    background: #ffffff;
     z-index: 1;
     height: 220px;
     width: 100%;
     padding: 30px;
-    color: #ffffff;
+    color: #fff;
     opacity: 0;
+    transform-style: preserve-3d;
     backface-visibility: hidden;
     background: linear-gradient(-135deg, #c850c0, #4158d0);
-    transform: translateY(110px) rotate(-90deg);
+    transform: translateY(110px) rotateX(-90deg);
+    box-shadow: 0px 5px 20px 0px rgba(0, 81, 250, 0.1);
     transition: all 0.5s ease;
-}
+  }
 
-.box .back-face p {
+.box .back-face p{
     margin-top: 10px;
     text-align: justify;
-}
+  }
 
-.box:hover .back-face {
+.box:hover .back-face{
     opacity: 1;
     transform: rotateX(0deg);
-}
+  }
 
-.box:hover .front-face {
+.box:hover .front-face{
     opacity: 0;
-    transform: translateY(-110px) rotate(90deg);
-}
+    transform: translateY(-110px) rotateX(90deg);
+  }
